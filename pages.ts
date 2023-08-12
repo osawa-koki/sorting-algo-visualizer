@@ -93,6 +93,11 @@ const pages = [
     emoji: '🌻',
     path: '/cocktail-sort/',
     name: 'Cocktail Sort'
+  },
+  {
+    emoji: '🌼',
+    path: '/strand-sort/',
+    name: 'Strand Sort'
   }
 ]
 
