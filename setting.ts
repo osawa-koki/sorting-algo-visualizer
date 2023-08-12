@@ -8,7 +8,7 @@ const setting = {
   title: '💦 Sorting Algo Visualizer 💦',
   intervalTime: 10,
   stopping: false,
-  stickCount: 100
+  stickCount: 50
 }
 
 export default setting
