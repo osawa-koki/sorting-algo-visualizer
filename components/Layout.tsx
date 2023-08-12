@@ -1,7 +1,21 @@
 import React, { useState, type ReactNode, useEffect } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+import { Button } from 'react-bootstrap'
+
 import setting from '../setting'
 import Menu from './Menu'
+
+const HomeLink = (): JSX.Element => {
+  return (
+    <>
+      <hr className='my-5' />
+      <Link href='/'>
+        <Button size='sm' variant='light'>Home</Button>
+      </Link>
+    </>
+  )
+}
 
 interface Props {
   children?: ReactNode
@@ -39,12 +53,18 @@ const Layout = ({
         {menu
           ? (
           <>
-            <main>{children}</main>
+            <main>
+              {children}
+              <HomeLink />
+            </main>
             <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </>
             )
           : (
-              children
+              <>
+                {children}
+                <HomeLink />
+              </>
             )}
       </div>
       {footer && (
