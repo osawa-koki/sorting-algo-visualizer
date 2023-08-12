@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Spinner } from 'react-bootstrap'
+import setting from '../setting'
 
 interface Props {
   title: string
@@ -13,6 +14,8 @@ export default function DemoCanvas (
     title,
     sort
   } = props
+
+  const [sorting, setSorting] = useState<boolean>(false)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [stickCount, setStickCount] = useState<number>(100)
@@ -34,6 +37,15 @@ export default function DemoCanvas (
     setSticks(_sticks.sort(() => Math.random() - 0.5))
   }
 
+  const startSorting = async (): Promise<void> => {
+    if (sticks == null) return
+    if (sorting) return
+    setSorting(true)
+    await sort(sticks, setSticks)
+    setting.stopping = false
+    setSorting(false)
+  }
+
   if (sticks == null) {
     return <Spinner />
   }
@@ -48,21 +60,34 @@ export default function DemoCanvas (
           })
         }
       </div>
-      <div className='d-flex'>
+      <div className='mt-5 d-flex'>
         <Button
-          variant='warning'
+          variant='outline-warning'
           className='me-3'
           onClick={shuffle}
+          disabled={sorting}
         >
           Shuffle
         </Button>
         <Button
-          variant='primary'
+          variant='outline-primary'
+          className='me-3'
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onClick={async () => { await sort(sticks, setSticks) } }
+          onClick={async () => { await startSorting() } }
+          disabled={sorting}
         >
           Sort
         </Button>
+        {
+          sorting &&
+          <Button
+            variant='outline-danger'
+            className='me-3'
+            onClick={() => { setting.stopping = true; setSorting(false) }}
+          >
+            Stop
+          </Button>
+        }
       </div>
     </>
   )
