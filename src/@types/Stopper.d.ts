@@ -1,3 +1,0 @@
-interface Stopper {
-  stopping: boolean
-}

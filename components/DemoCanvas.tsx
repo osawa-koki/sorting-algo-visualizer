@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Spinner } from 'react-bootstrap'
+import setting from '../setting'
 
 interface Props {
   title: string
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
-  stopper: Stopper
 }
 
 export default function DemoCanvas (
@@ -12,8 +12,7 @@ export default function DemoCanvas (
 ): React.JSX.Element {
   const {
     title,
-    sort,
-    stopper
+    sort
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
@@ -43,7 +42,7 @@ export default function DemoCanvas (
     if (sorting) return
     setSorting(true)
     await sort(sticks, setSticks)
-    stopper.stopping = false
+    setting.stopping = false
     setSorting(false)
   }
 
@@ -84,7 +83,7 @@ export default function DemoCanvas (
           <Button
             variant='outline-danger'
             className='me-3'
-            onClick={() => { stopper.stopping = true; setSorting(false) }}
+            onClick={() => { setting.stopping = true; setSorting(false) }}
           >
             Stop
           </Button>
