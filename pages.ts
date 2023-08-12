@@ -23,6 +23,11 @@ const pages = [
     emoji: '🌸',
     path: '/quick-sort/',
     name: 'Quick Sort'
+  },
+  {
+    emoji: '⛱️',
+    path: '/heap-sort/',
+    name: 'Heap Sort'
   }
 ]
 
