@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Spinner } from 'react-bootstrap'
+import { Alert, Button, Spinner } from 'react-bootstrap'
 import { BsFillBookFill } from 'react-icons/bs'
 import setting from '../setting'
 import StickProperty from './StickProperty'
@@ -9,6 +9,7 @@ interface Props {
   title: string
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
   content: Description
+  implemented?: boolean
 }
 
 export default function DemoCanvas (
@@ -17,7 +18,8 @@ export default function DemoCanvas (
   const {
     title,
     sort,
-    content
+    content,
+    implemented = true
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
@@ -61,6 +63,17 @@ export default function DemoCanvas (
 
   if (sticks == null) {
     return <Spinner />
+  }
+
+  if (!implemented) {
+    return (
+      <>
+        <h1>{title}</h1>
+        <Alert variant='danger' className='mt-3'>
+          このアルゴリズムは実装されていません。
+        </Alert>
+      </>
+    )
   }
 
   return (
