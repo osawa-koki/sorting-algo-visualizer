@@ -21,6 +21,10 @@ export default function BubbleSortPage (): React.JSX.Element {
       <DemoCanvas
         title='Bubble Sort'
         sort={sort}
+        content={
+          <>
+          </>
+        }
       />
     </>
   )

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Spinner } from 'react-bootstrap'
+import { BsFillBookFill } from 'react-icons/bs'
 import setting from '../setting'
 import StickProperty from './StickProperty'
+import DescriptionModal from './DescriptionModal'
 
 interface Props {
   title: string
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
+  content: React.JSX.Element
 }
 
 export default function DemoCanvas (
@@ -13,7 +16,8 @@ export default function DemoCanvas (
 ): React.JSX.Element {
   const {
     title,
-    sort
+    sort,
+    content
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
@@ -22,6 +26,8 @@ export default function DemoCanvas (
   const [stickCount, setStickCount] = useState<number>(setting.stickCount)
   const [sticks, setSticks] = useState<number[]>()
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
+
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const sticks: number[] = []
@@ -59,7 +65,15 @@ export default function DemoCanvas (
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1 className='d-flex justify-content-between align-items-center'>
+        {title}
+        <BsFillBookFill
+          type='button'
+          className='text-primary'
+          style={{ transition: 'transform 0.3s ease 0s', transform: modalIsOpen ? 'rotate(390deg)' : '' }}
+          onClick={() => { setIsOpen(true) }}
+        />
+      </h1>
       <div id='DemoCanvas'>
         {
           sticks.map((stick, index) => {
@@ -101,6 +115,11 @@ export default function DemoCanvas (
         setStickCount={setStickCount}
         intervalTime={waitingTime}
         setIntervalTime={setWaitingTime}
+      />
+      <DescriptionModal
+        isOpen={modalIsOpen}
+        setIsOpen={setIsOpen}
+        content={content}
       />
     </>
   )
