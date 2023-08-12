@@ -1,12 +1,12 @@
 const pages = [
   {
     emoji: '📚',
-    path: '/bubble-sort',
+    path: '/bubble-sort/',
     name: 'Bubble Sort'
   },
   {
     emoji: '🌊',
-    path: '/selection-sort',
+    path: '/selection-sort/',
     name: 'Selection Sort'
   }
 ]
