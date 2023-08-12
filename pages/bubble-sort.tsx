@@ -9,7 +9,7 @@ export default function BubbleSortPage (): React.JSX.Element {
         if (setting.stopping) return // 中断用
         if (sticks[j] < sticks[j - 1]) {
           [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]]
-          await new Promise(resolve => setTimeout(resolve, setting.waitingTime))
+          await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
           setSticks([...sticks])
         }
       }

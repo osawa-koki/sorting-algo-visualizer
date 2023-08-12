@@ -23,7 +23,7 @@ export default function DemoCanvas (
   const [sorting, setSorting] = useState<boolean>(false)
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [stickCount, setStickCount] = useState<number>(100)
+  const [stickCount, setStickCount] = useState<number>(setting.stickCount)
   const [sticks, setSticks] = useState<number[]>()
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
 
@@ -31,7 +31,7 @@ export default function DemoCanvas (
 
   useEffect(() => {
     const sticks: number[] = []
-    for (let i = 0; i < stickCount; i++) {
+    for (let i = 1; i <= stickCount; i++) {
       sticks.push(i)
     }
     setSticks(sticks)
@@ -50,8 +50,13 @@ export default function DemoCanvas (
     if (sorting) return
     setSorting(true)
     await sort(sticks, setSticks)
-    setting.stopping = false
-    setSorting(false)
+    putSortingState(false)
+  }
+
+  const putSortingState = (sorting: boolean): void => {
+    // 以下の2つの処理は必ずセットで行う！
+    setSorting(sorting)
+    setting.stopping = sorting
   }
 
   if (sticks == null) {
@@ -99,7 +104,7 @@ export default function DemoCanvas (
           <Button
             variant='outline-danger'
             className='me-3'
-            onClick={() => { setting.stopping = true; setSorting(false) }}
+            onClick={() => { putSortingState(true) }}
           >
             Stop
           </Button>
