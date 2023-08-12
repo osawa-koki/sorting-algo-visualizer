@@ -8,7 +8,7 @@ import DescriptionModal from './DescriptionModal'
 interface Props {
   title: string
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
-  content: React.JSX.Element
+  content: Description
 }
 
 export default function DemoCanvas (
@@ -69,6 +69,7 @@ export default function DemoCanvas (
         {title}
         <BsFillBookFill
           type='button'
+          id='DescriptionButton'
           className='text-primary'
           style={{ transition: 'transform 0.3s ease 0s', transform: modalIsOpen ? 'rotate(390deg)' : '' }}
           onClick={() => { setIsOpen(true) }}
@@ -117,6 +118,7 @@ export default function DemoCanvas (
         setIntervalTime={setWaitingTime}
       />
       <DescriptionModal
+        title={title}
         isOpen={modalIsOpen}
         setIsOpen={setIsOpen}
         content={content}
