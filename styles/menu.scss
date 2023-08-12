@@ -31,6 +31,15 @@
     color: whitesmoke;
     margin-top: 0.5rem;
     text-align: left;
+    &:not(.active) {
+      &:hover {
+        background-color: rgba(white, 0.25);
+      }
+    }
+    &.active {
+      color: white;
+      background-color: #0a58ca;
+    }
   }
 }
 
