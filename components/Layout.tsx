@@ -6,12 +6,14 @@ import { Button } from 'react-bootstrap'
 import setting from '../setting'
 import Menu from './Menu'
 
-const HomeLink = (): JSX.Element => {
+const HomeLink = (props: {
+  setCurrentPage: React.Dispatch<React.SetStateAction<string | null>>
+}): JSX.Element => {
   return (
     <>
       <hr className='my-5' />
       <Link href='/'>
-        <Button size='sm' variant='light'>Home</Button>
+        <Button size='sm' variant='light' onClick={() => { props.setCurrentPage('/') }}>Home</Button>
       </Link>
     </>
   )
@@ -55,7 +57,7 @@ const Layout = ({
           <>
             <main>
               {children}
-              <HomeLink />
+              <HomeLink setCurrentPage={setCurrentPage} />
             </main>
             <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </>
@@ -63,7 +65,7 @@ const Layout = ({
           : (
               <>
                 {children}
-                <HomeLink />
+                <HomeLink setCurrentPage={setCurrentPage} />
               </>
             )}
       </div>
