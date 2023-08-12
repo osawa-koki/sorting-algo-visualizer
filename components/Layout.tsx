@@ -2,18 +2,17 @@ import React, { useState, type ReactNode, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Button } from 'react-bootstrap'
+import { useRouter } from 'next/router'
 
 import setting from '../setting'
 import Menu from './Menu'
 
-const HomeLink = (props: {
-  setCurrentPage: React.Dispatch<React.SetStateAction<string | null>>
-}): JSX.Element => {
+const HomeLink = (): JSX.Element => {
   return (
     <>
       <hr className='my-5' />
       <Link href='/'>
-        <Button size='sm' variant='light' onClick={() => { props.setCurrentPage('/') }}>Home</Button>
+        <Button size='sm' variant='light'>Home</Button>
       </Link>
     </>
   )
@@ -32,12 +31,15 @@ const Layout = ({
   menu = true,
   footer = true
 }: Props): JSX.Element => {
+  const router = useRouter()
+
   const [currentPage, setCurrentPage] = useState<string | null>(null)
 
   useEffect(() => {
     const path = window.location.pathname.replace(setting.basePath, '')
     setCurrentPage(path)
-  }, [])
+    console.log('path: ', path)
+  }, [router.pathname])
 
   return (
     <div>
@@ -57,7 +59,7 @@ const Layout = ({
           <>
             <main>
               {children}
-              <HomeLink setCurrentPage={setCurrentPage} />
+              <HomeLink />
             </main>
             <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </>
@@ -65,7 +67,7 @@ const Layout = ({
           : (
               <>
                 {children}
-                <HomeLink setCurrentPage={setCurrentPage} />
+                <HomeLink />
               </>
             )}
       </div>

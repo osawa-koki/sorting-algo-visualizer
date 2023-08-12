@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Menu (props: Props): JSX.Element {
-  const { currentPage, setCurrentPage } = props
+  const { currentPage } = props
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
@@ -27,7 +27,6 @@ function Menu (props: Props): JSX.Element {
                   ? 'btn-primary'
                   : ''
               }`}
-              onClick={() => { setCurrentPage(page.path) }}
             >
               {page.emoji}&nbsp;{page.name}
             </Link>
