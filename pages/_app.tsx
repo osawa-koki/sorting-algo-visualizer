@@ -5,6 +5,7 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/style.scss'
 import '../styles/menu.scss'
+import '../styles/demo_canvas.scss'
 
 import setting from '../setting'
 import Layout from '../components/Layout'
