@@ -78,6 +78,11 @@ const pages = [
     emoji: '🌵',
     path: '/pigeonhole-sort/',
     name: 'Pigeonhole Sort'
+  },
+  {
+    emoji: '🌹',
+    path: '/bitonic-sort/',
+    name: 'Bitonic Sort'
   }
 ]
 
