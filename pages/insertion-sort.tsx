@@ -21,7 +21,7 @@ export default function InsertionSortPage (): React.JSX.Element {
   return (
     <>
       <DemoCanvas
-        title='Selection Sort'
+        title='Insertion Sort'
         sort={sort}
         content={{
           summary: [

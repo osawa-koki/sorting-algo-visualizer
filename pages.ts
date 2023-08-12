@@ -13,6 +13,11 @@ const pages = [
     emoji: '📦',
     path: '/insertion-sort/',
     name: 'Insertion Sort'
+  },
+  {
+    emoji: '🔀',
+    path: '/merge-sort/',
+    name: 'Merge Sort'
   }
 ]
 
