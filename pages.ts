@@ -63,6 +63,11 @@ const pages = [
     emoji: '🍰',
     path: '/pancake-sort/',
     name: 'Pancake Sort'
+  },
+  {
+    emoji: '🍀',
+    path: '/gnome-sort/',
+    name: 'Gnome Sort'
   }
 ]
 
