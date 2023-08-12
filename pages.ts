@@ -58,6 +58,11 @@ const pages = [
     emoji: '🌀',
     path: '/cycle-sort/',
     name: 'Cycle Sort'
+  },
+  {
+    emoji: '🍰',
+    path: '/pancake-sort/',
+    name: 'Pancake Sort'
   }
 ]
 
