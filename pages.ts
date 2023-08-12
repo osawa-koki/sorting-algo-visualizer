@@ -53,6 +53,11 @@ const pages = [
     emoji: '💎',
     path: '/radix-sort/',
     name: 'Radix Sort'
+  },
+  {
+    emoji: '🌀',
+    path: '/cycle-sort/',
+    name: 'Cycle Sort'
   }
 ]
 
