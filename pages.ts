@@ -73,6 +73,11 @@ const pages = [
     emoji: '🌱',
     path: '/stooge-sort/',
     name: 'Stooge Sort'
+  },
+  {
+    emoji: '🌵',
+    path: '/pigeonhole-sort/',
+    name: 'Pigeonhole Sort'
   }
 ]
 
