@@ -1,13 +1,19 @@
 import React from 'react'
 import DemoCanvas from '../components/DemoCanvas'
+import setting from '../setting'
 
 export default function BubbleSortPage (): React.JSX.Element {
+  const stopper: Stopper = {
+    stopping: false
+  }
+
   const sort = async (sticks: number[], setSticks: (sticks: number[]) => void): Promise<void> => {
     for (let i = 0; i < sticks.length - 1; i++) {
       for (let j = sticks.length - 1; i < j; j--) {
+        if (stopper.stopping) return // 中断用
         if (sticks[j] < sticks[j - 1]) {
           [sticks[j], sticks[j - 1]] = [sticks[j - 1], sticks[j]]
-          await new Promise(resolve => setTimeout(resolve, 5))
+          await new Promise(resolve => setTimeout(resolve, setting.waitingTime))
           setSticks([...sticks])
         }
       }
@@ -19,6 +25,7 @@ export default function BubbleSortPage (): React.JSX.Element {
       <DemoCanvas
         title='Bubble Sort'
         sort={sort}
+        stopper={stopper}
       />
     </>
   )

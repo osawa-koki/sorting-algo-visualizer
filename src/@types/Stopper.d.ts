@@ -1,0 +1,3 @@
+interface Stopper {
+  stopping: boolean
+}

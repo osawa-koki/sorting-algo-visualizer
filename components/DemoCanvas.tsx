@@ -4,6 +4,7 @@ import { Button, Spinner } from 'react-bootstrap'
 interface Props {
   title: string
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
+  stopper: Stopper
 }
 
 export default function DemoCanvas (
@@ -11,7 +12,8 @@ export default function DemoCanvas (
 ): React.JSX.Element {
   const {
     title,
-    sort
+    sort,
+    stopper
   } = props
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -58,10 +60,17 @@ export default function DemoCanvas (
         </Button>
         <Button
           variant='primary'
+          className='me-3'
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={async () => { await sort(sticks, setSticks) } }
         >
           Sort
+        </Button>
+        <Button
+          variant='danger'
+          onClick={() => { stopper.stopping = true }}
+        >
+          Stop
         </Button>
       </div>
     </>
