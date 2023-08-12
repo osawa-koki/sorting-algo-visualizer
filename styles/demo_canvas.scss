@@ -6,3 +6,9 @@
   margin: 1rem 0;
   height: 300px;
 }
+
+#DescriptionButton {
+  &:hover {
+    transform: scale(1.2);
+  }
+}

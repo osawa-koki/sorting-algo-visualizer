@@ -21,10 +21,18 @@ export default function BubbleSortPage (): React.JSX.Element {
       <DemoCanvas
         title='Bubble Sort'
         sort={sort}
-        content={
-          <>
-          </>
-        }
+        content={{
+          summary: [
+            'バブルソートは一つとなりと比べては入れ替える、という処理を繰り返していく方法です。',
+            '隣同士のうち、大きい方が前に並ぶように入れ替えていくと、結果的に全体が降順で並びます。',
+            '逆に小さいほうが前に並ぶようにすると昇順となります。'
+          ],
+          computationalComplexity: 'O(n^2)',
+          features: [
+            'アルゴリズムがシンプル。',
+            '計算量が大きい。'
+          ]
+        }}
       />
     </>
   )

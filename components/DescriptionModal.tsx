@@ -19,13 +19,14 @@ const customStyles = {
 }
 
 interface Props {
+  title: string
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  content: React.JSX.Element
+  content: Description
 }
 
 export default function DescriptionModal (props: Props): React.JSX.Element {
-  const { isOpen, setIsOpen, content } = props
+  const { title, isOpen, setIsOpen, content } = props
 
   return (
     <>
@@ -40,7 +41,38 @@ export default function DescriptionModal (props: Props): React.JSX.Element {
           className='top-0 end-0 position-absolute'
           onClick={() => { setIsOpen(false) }}
         />
-        {content}
+        <h2 className='mt-3'>{title}</h2>
+        <p className='mt-3'>
+          {
+            content.summary.map((text, index) => (
+              <span key={index}>{text}<br /></span>
+            ))
+          }
+          {
+            content.computationalComplexity != null && (
+              <>
+                <hr />
+                <h2 className='mt-3'>計算量</h2>
+                <p className='mt-3'>{content.computationalComplexity}</p>
+              </>
+            )
+          }
+          {
+            content.features != null && content.features.length > 0 && (
+              <>
+                <hr />
+                <h2 className='mt-3'>特徴</h2>
+                <ul className='mt-3'>
+                  {
+                    content.features.map((text, index) => (
+                      <li key={index}>{text}</li>
+                    ))
+                  }
+                </ul>
+              </>
+            )
+          }
+        </p>
       </Modal>
     </>
   )
