@@ -68,6 +68,11 @@ const pages = [
     emoji: '🍀',
     path: '/gnome-sort/',
     name: 'Gnome Sort'
+  },
+  {
+    emoji: '🌱',
+    path: '/stooge-sort/',
+    name: 'Stooge Sort'
   }
 ]
 
