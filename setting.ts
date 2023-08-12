@@ -6,8 +6,9 @@ const setting = {
   basePath: Env.basePath,
   apiPath: isProd ? '' : 'http://localhost:8000',
   title: '💦 Sorting Algo Visualizer 💦',
-  waitingTime: 10,
-  stopping: false
+  intervalTime: 10,
+  stopping: false,
+  stickCount: 100
 }
 
 export default setting
