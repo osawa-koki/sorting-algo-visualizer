@@ -8,6 +8,11 @@ const pages = [
     emoji: '🌊',
     path: '/selection-sort/',
     name: 'Selection Sort'
+  },
+  {
+    emoji: '📦',
+    path: '/insertion-sort/',
+    name: 'Insertion Sort'
   }
 ]
 
