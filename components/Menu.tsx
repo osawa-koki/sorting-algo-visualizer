@@ -24,7 +24,7 @@ function Menu (props: Props): JSX.Element {
               href={page.path}
               className={`btn ${
                 currentPage === page.path
-                  ? 'btn-primary'
+                  ? 'btn-primary active'
                   : ''
               }`}
             >
