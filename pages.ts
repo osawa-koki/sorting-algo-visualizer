@@ -48,6 +48,11 @@ const pages = [
     emoji: '⛈️',
     path: '/comb-sort/',
     name: 'Comb Sort'
+  },
+  {
+    emoji: '💎',
+    path: '/radix-sort/',
+    name: 'Radix Sort'
   }
 ]
 
