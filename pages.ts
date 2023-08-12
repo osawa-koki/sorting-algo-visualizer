@@ -43,6 +43,11 @@ const pages = [
     emoji: '🐉',
     path: '/bucket-sort/',
     name: 'Bucket Sort'
+  },
+  {
+    emoji: '⛈️',
+    path: '/comb-sort/',
+    name: 'Comb Sort'
   }
 ]
 
