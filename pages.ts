@@ -33,6 +33,11 @@ const pages = [
     emoji: '🌳',
     path: '/shell-sort/',
     name: 'Shell Sort'
+  },
+  {
+    emoji: '🌈',
+    path: '/counting-sort/',
+    name: 'Counting Sort'
   }
 ]
 
