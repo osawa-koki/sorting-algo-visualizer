@@ -18,6 +18,11 @@ const pages = [
     emoji: '🔀',
     path: '/merge-sort/',
     name: 'Merge Sort'
+  },
+  {
+    emoji: '🌸',
+    path: '/quick-sort/',
+    name: 'Quick Sort'
   }
 ]
 
