@@ -14,6 +14,7 @@ export default function DemoCanvas (
     sort
   } = props
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [stickCount, setStickCount] = useState<number>(100)
   const [sticks, setSticks] = useState<number[]>()
 
