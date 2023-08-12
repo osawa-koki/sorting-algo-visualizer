@@ -38,6 +38,11 @@ const pages = [
     emoji: '🌈',
     path: '/counting-sort/',
     name: 'Counting Sort'
+  },
+  {
+    emoji: '🐉',
+    path: '/bucket-sort/',
+    name: 'Bucket Sort'
   }
 ]
 
