@@ -26,7 +26,7 @@
     "@types/bootstrap": "^5.2.6",
     "@types/react-bootstrap": "^0.32.32",
     "bootstrap": "^5.3.1",
-    "next": "^13.4.13",
+    "next": "^13.4.16",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
