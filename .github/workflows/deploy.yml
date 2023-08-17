@@ -46,11 +46,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build with Next.js
-        run: SUB_DIRECTORY="/${{ github.event.repository.name }}" yarn build
+        run: SUB_DIRECTORY='' yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./dist
+          path: ./dist/
 
   # Deployment job
   deploy:
