@@ -24,7 +24,6 @@ export default function DemoCanvas (
 
   const [sorting, setSorting] = useState<boolean>(false)
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [stickCount, setStickCount] = useState<number>(setting.stickCount)
   const [sticks, setSticks] = useState<number[]>()
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
