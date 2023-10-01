@@ -38,7 +38,6 @@ const Layout = ({
   useEffect(() => {
     const path = window.location.pathname.replace(setting.basePath, '')
     setCurrentPage(path)
-    console.log('path: ', path)
   }, [router.pathname])
 
   return (
