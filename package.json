@@ -23,8 +23,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/bootstrap": "^5.2.6",
-    "@types/react-bootstrap": "^0.32.32",
     "bootstrap": "^5.3.1",
     "next": "^13.5.3",
     "react": "^18.2.0",
@@ -36,9 +34,11 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.19",
+    "@types/bootstrap": "^5.2.6",
     "@types/jest": "^29.5.1",
     "@types/node": "^20.5.1",
     "@types/react": "^18.2.24",
+    "@types/react-bootstrap": "^0.32.32",
     "@types/react-dom": "^18.2.4",
     "@types/react-modal": "^3.16.0",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
