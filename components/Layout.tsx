@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import setting from '../setting'
 import Menu from './Menu'
 
-const HomeLink = (): JSX.Element => {
+const HomeLink = (): React.JSX.Element => {
   return (
     <>
       <hr className='my-5' />
@@ -30,7 +30,7 @@ const Layout = ({
   title = setting.title,
   menu = true,
   footer = true
-}: Props): JSX.Element => {
+}: Props): React.JSX.Element => {
   const router = useRouter()
 
   const [currentPage, setCurrentPage] = useState<string | null>(null)
