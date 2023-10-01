@@ -1,9 +1,27 @@
 import React from 'react'
 import DemoCanvas from '../components/DemoCanvas'
+import setting from '../setting'
 
 export default function RadixSortPage (): React.JSX.Element {
   const sort = async (sticks: number[], setSticks: (sticks: number[]) => void): Promise<void> => {
-    // 実装中、、、
+    const digit = Math.max(...sticks).toString().length
+    for (let i = 0; i < digit; i++) {
+      const bucket: number[][] = Array.from(Array(10), () => [])
+      for (let j = 0; j < sticks.length; j++) {
+        if (setting.stopping) return // 中断用
+        const num = Math.floor(sticks[j] / Math.pow(10, i)) % 10
+        bucket[num].push(sticks[j])
+      }
+      let index = 0
+      for (let j = 0; j < bucket.length; j++) {
+        for (let k = 0; k < bucket[j].length; k++) {
+          if (setting.stopping) return // 中断用
+          sticks[index++] = bucket[j][k]
+          await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
+          setSticks([...sticks])
+        }
+      }
+    }
   }
 
   return (
@@ -21,7 +39,6 @@ export default function RadixSortPage (): React.JSX.Element {
             'パフォーマンスに安定性がない。'
           ]
         }}
-        implemented={false}
       />
     </>
   )
