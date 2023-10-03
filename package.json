@@ -33,7 +33,7 @@
     "sass": "^1.68.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.5.3",
+    "@next/eslint-plugin-next": "^13.5.4",
     "@types/bootstrap": "^5.2.6",
     "@types/jest": "^29.5.1",
     "@types/node": "^20.5.1",
