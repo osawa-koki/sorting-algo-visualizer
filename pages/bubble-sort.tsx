@@ -37,7 +37,7 @@ export default function BubbleSortPage (): React.JSX.Element {
           {
             id: 0,
             lang: 'TypeScript',
-            path: 'sample.ts'
+            path: 'bubble-sort.ts'
           },
           {
             id: 1,
