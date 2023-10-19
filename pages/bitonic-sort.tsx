@@ -22,6 +22,7 @@ export default function BitonicSortPage (): React.JSX.Element {
       for (let i = start; i < start + half; i++) {
         if ((array[i] > array[i + half]) === ascending) {
           [array[i], array[i + half]] = [array[i + half], array[i]]
+          if (setting.stopping) return // 中断用
           await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
           setSticks([...sticks])
         }
