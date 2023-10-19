@@ -33,6 +33,18 @@ export default function BubbleSortPage (): React.JSX.Element {
             '計算量が大きい。'
           ]
         }}
+        codes={[
+          {
+            id: 0,
+            lang: 'TypeScript',
+            path: 'sample.ts'
+          },
+          {
+            id: 1,
+            lang: 'Python',
+            path: 'sample.py'
+          }
+        ]}
       />
     </>
   )
