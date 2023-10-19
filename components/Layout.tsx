@@ -58,7 +58,7 @@ const Layout = ({
           <>
             <main>
               {children}
-              <HomeLink />
+              {currentPage !== '/' && <HomeLink />}
             </main>
             <Menu currentPage={currentPage} setCurrentPage={setCurrentPage} />
           </>
