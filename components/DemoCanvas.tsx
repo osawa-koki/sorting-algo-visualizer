@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Alert, Button, Spinner } from 'react-bootstrap'
-import { BsFillBookFill } from 'react-icons/bs'
+import { BsCodeSlash, BsFillBookFill } from 'react-icons/bs'
 import setting from '../setting'
 import StickProperty from './StickProperty'
 import DescriptionModal from './DescriptionModal'
+import CodeModal from './CodeModal'
 
 interface Props {
   title: string
@@ -11,6 +12,7 @@ interface Props {
   content: Description
   implemented?: boolean
   activeCondition?: ActiveCondition
+  codes?: Codes
 }
 
 export default function DemoCanvas (
@@ -21,7 +23,8 @@ export default function DemoCanvas (
     sort,
     content,
     implemented = true,
-    activeCondition
+    activeCondition,
+    codes
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
@@ -31,6 +34,7 @@ export default function DemoCanvas (
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
 
   const [descriptionModalIsOpen, setDescriptionModalIsOpen] = useState<boolean>(false)
+  const [codeModalIsOpen, setCodeModalIsOpen] = useState<boolean>(false)
 
   const { active, disabledReason } =
   activeCondition?.({ stickCount: setting.stickCount }) ??
@@ -89,10 +93,19 @@ export default function DemoCanvas (
           <BsFillBookFill
             type='button'
             id='DescriptionButton'
-            className='text-primary'
+            className='text-primary mx-1'
             style={{ transition: 'transform 0.3s ease 0s', transform: descriptionModalIsOpen ? 'rotate(390deg)' : '' }}
             onClick={() => { setDescriptionModalIsOpen(true) }}
           />
+          {codes != null && (
+            <BsCodeSlash
+              type='button'
+              id='CodeButton'
+              className='text-primary mx-1'
+              style={{ transition: 'transform 0.3s ease 0s', transform: codeModalIsOpen ? 'rotate(390deg)' : '' }}
+              onClick={() => { setCodeModalIsOpen(true) }}
+            />
+          )}
         </div>
       </h1>
       <div id='DemoCanvas'>
@@ -148,6 +161,14 @@ export default function DemoCanvas (
         setIsOpen={setDescriptionModalIsOpen}
         content={content}
       />
+      {codes != null && (
+        <CodeModal
+          title={title}
+          isOpen={codeModalIsOpen}
+          setIsOpen={setCodeModalIsOpen}
+          codes={codes}
+        />
+      )}
     </>
   )
 }

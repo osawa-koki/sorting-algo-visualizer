@@ -35,7 +35,7 @@ export default function DescriptionModal (props: Props): React.JSX.Element {
         onAfterOpen={() => { }}
         onRequestClose={() => { setIsOpen(false) }}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="説明モーダル"
       >
         <CloseButton
           className='top-0 end-0 position-absolute'
