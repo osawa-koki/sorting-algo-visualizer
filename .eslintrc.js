@@ -24,6 +24,7 @@ module.exports = {
   ignorePatterns: [
     'node_modules/**/*',
     'next-env.d.ts',
-    'dist/**/*'
+    'dist/**/*',
+    'public/**/*'
   ]
 }
