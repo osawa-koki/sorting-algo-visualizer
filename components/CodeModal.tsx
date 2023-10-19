@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import { Alert, Button, CloseButton, Spinner } from 'react-bootstrap'
 import Modal from 'react-modal'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import vs from 'react-syntax-highlighter/dist/esm/styles/hljs/vs'
 import useSWR from 'swr'
 import setting from '../setting'
 import fetcher from '../src/common/fetcher'
@@ -77,11 +79,13 @@ export default function CodeModal (props: Props): React.JSX.Element {
             )
           : code != null
             ? (
-          <pre className='bg-dark text-light p-3 rounded'>
-            <code>
-              {code}
-            </code>
-          </pre>
+          <SyntaxHighlighter language='typescript' style={vs} customStyle={{
+            fontFamily: 'consolas monospace',
+            padding: '1rem',
+            border: '1px solid gray'
+          }}>
+            {code}
+          </SyntaxHighlighter>
               )
             : selectedCodeId != null
               ? (
