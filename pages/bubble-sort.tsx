@@ -37,12 +37,14 @@ export default function BubbleSortPage (): React.JSX.Element {
           {
             id: 0,
             lang: 'TypeScript',
-            path: 'bubble-sort.ts'
+            path: 'bubble-sort.ts',
+            langKey: 'typescript'
           },
           {
             id: 1,
             lang: 'Python',
-            path: 'sample.py'
+            path: 'sample.py',
+            langKey: 'python'
           }
         ]}
       />
