@@ -10,6 +10,7 @@ interface Props {
   sort: (sticks: number[], setSticks: (sticks: number[]) => void) => Promise<void>
   content: Description
   implemented?: boolean
+  activeCondition?: ActiveCondition
 }
 
 export default function DemoCanvas (
@@ -19,7 +20,8 @@ export default function DemoCanvas (
     title,
     sort,
     content,
-    implemented = true
+    implemented = true,
+    activeCondition
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
@@ -29,6 +31,10 @@ export default function DemoCanvas (
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
 
   const [modalIsOpen, setIsOpen] = useState<boolean>(false)
+
+  const { active, disabledReason } =
+  activeCondition?.({ stickCount: setting.stickCount }) ??
+  { active: true, disabledReason: null }
 
   useEffect(() => {
     const sticks: number[] = []
@@ -108,7 +114,7 @@ export default function DemoCanvas (
           className='me-3'
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onClick={async () => { await startSorting() } }
-          disabled={sorting}
+          disabled={sorting || !active}
         >
           Sort
         </Button>
@@ -123,6 +129,11 @@ export default function DemoCanvas (
           </Button>
         }
       </div>
+      {!active && (
+        <Alert variant='danger' className='mt-3'>
+          {disabledReason}
+        </Alert>
+      )}
       <StickProperty
         stickCount={stickCount}
         setStickCount={setStickCount}
