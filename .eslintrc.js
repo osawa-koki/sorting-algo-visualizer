@@ -20,5 +20,10 @@ module.exports = {
     'react'
   ],
   rules: {
-  }
+  },
+  ignorePatterns: [
+    'node_modules/**/*',
+    'next-env.d.ts',
+    'dist/**/*'
+  ]
 }

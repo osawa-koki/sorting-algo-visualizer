@@ -1,5 +1,6 @@
 import React from 'react'
 import setting from '../setting'
+import HomeDemo from '../components/HomeDemo'
 
 export default function Home (): JSX.Element {
   return (
@@ -8,6 +9,7 @@ export default function Home (): JSX.Element {
         <h1>{setting.title}</h1>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img id='Logo' className='mt-3' style={{ width: '100%', maxWidth: '100px' }} src={`${setting.basePath}/tako.png`} alt='Logo' />
+        <HomeDemo />
       </div>
     </>
   )
