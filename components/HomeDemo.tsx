@@ -45,7 +45,6 @@ export default function HomeDemo (): JSX.Element {
   useEffect(() => {
     if (typeof window !== 'undefined') return
     const interval = setInterval(() => {
-      console.log('interval')
       setHomeDemoChars((prevHomeDemoChars) => {
         const newHomeDemoChars = [...prevHomeDemoChars]
         for (let i = 0; i < newHomeDemoChars.length; i++) {
