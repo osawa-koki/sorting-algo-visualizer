@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { Button, CloseButton, Spinner } from 'react-bootstrap'
+import { Alert, Button, CloseButton, Spinner } from 'react-bootstrap'
 import Modal from 'react-modal'
 import useSWR from 'swr'
 import setting from '../setting'
@@ -35,7 +35,7 @@ export default function CodeModal (props: Props): React.JSX.Element {
 
   const path = useMemo(() => codes.find((code) => code.id === selectedCodeId)?.path, [selectedCodeId])
 
-  const { data: code } = useSWR(
+  const { data: code, error } = useSWR(
     path != null ? `${setting.basePath}/codes/${path}` : null,
     fetcher
   )
@@ -69,21 +69,27 @@ export default function CodeModal (props: Props): React.JSX.Element {
             )
           })}
         </div>
-        {code != null
+        {error != null
           ? (
+            <Alert variant='danger'>
+              サンプルコードの取得に失敗しました。
+            </Alert>
+            )
+          : code != null
+            ? (
           <pre className='bg-dark text-light p-3 rounded'>
             <code>
               {code}
             </code>
           </pre>
-            )
-          : selectedCodeId != null
-            ? (
-          <Spinner />
               )
-            : (
+            : selectedCodeId != null
+              ? (
+          <Spinner />
+                )
+              : (
           <p>言語を選択してください。</p>
-              )}
+                )}
       </Modal>
     </>
   )
