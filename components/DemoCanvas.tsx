@@ -30,7 +30,7 @@ export default function DemoCanvas (
   const [sticks, setSticks] = useState<number[]>()
   const [waitingTime, setWaitingTime] = useState<number>(setting.intervalTime)
 
-  const [modalIsOpen, setIsOpen] = useState<boolean>(false)
+  const [descriptionModalIsOpen, setDescriptionModalIsOpen] = useState<boolean>(false)
 
   const { active, disabledReason } =
   activeCondition?.({ stickCount: setting.stickCount }) ??
@@ -85,13 +85,15 @@ export default function DemoCanvas (
     <>
       <h1 className='d-flex justify-content-between align-items-center'>
         {title}
-        <BsFillBookFill
-          type='button'
-          id='DescriptionButton'
-          className='text-primary'
-          style={{ transition: 'transform 0.3s ease 0s', transform: modalIsOpen ? 'rotate(390deg)' : '' }}
-          onClick={() => { setIsOpen(true) }}
-        />
+        <div>
+          <BsFillBookFill
+            type='button'
+            id='DescriptionButton'
+            className='text-primary'
+            style={{ transition: 'transform 0.3s ease 0s', transform: descriptionModalIsOpen ? 'rotate(390deg)' : '' }}
+            onClick={() => { setDescriptionModalIsOpen(true) }}
+          />
+        </div>
       </h1>
       <div id='DemoCanvas'>
         {
@@ -142,8 +144,8 @@ export default function DemoCanvas (
       />
       <DescriptionModal
         title={title}
-        isOpen={modalIsOpen}
-        setIsOpen={setIsOpen}
+        isOpen={descriptionModalIsOpen}
+        setIsOpen={setDescriptionModalIsOpen}
         content={content}
       />
     </>
