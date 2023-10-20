@@ -61,6 +61,14 @@ export default function QuickSortPage (): React.JSX.Element {
             '非常に高速。'
           ]
         }}
+        codes={[
+          {
+            id: 0,
+            lang: 'Haskell',
+            path: 'quick-sort.hs',
+            langKey: 'haskell'
+          }
+        ]}
       />
     </>
   )
