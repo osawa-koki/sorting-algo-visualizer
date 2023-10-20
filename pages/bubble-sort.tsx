@@ -45,6 +45,12 @@ export default function BubbleSortPage (): React.JSX.Element {
             lang: 'Python',
             path: 'bubble-sort.py',
             langKey: 'python'
+          },
+          {
+            id: 2,
+            lang: 'Go',
+            path: 'bubble-sort.go',
+            langKey: 'go'
           }
         ]}
       />
