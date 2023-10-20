@@ -35,7 +35,14 @@ export default function CodeModal (props: Props): React.JSX.Element {
 
   const [selectedCodeId, setSelectedCodeId] = useState<number | null>()
 
-  const path = useMemo((): string | null => codes.find((code) => code.id === selectedCodeId)?.path ?? null, [selectedCodeId])
+  const {
+    path,
+    langKey
+  } = useMemo(() => {
+    const path = codes.find((code) => code.id === selectedCodeId)?.path
+    const langKey = codes.find((code) => code.id === selectedCodeId)?.langKey
+    return { path, langKey }
+  }, [selectedCodeId])
 
   const { data: code, error } = useSWR(
     path != null ? `${setting.basePath}/codes/${path}` : null,
@@ -71,29 +78,34 @@ export default function CodeModal (props: Props): React.JSX.Element {
             )
           })}
         </div>
-        {error != null
-          ? (
-            <Alert variant='danger'>
-              サンプルコードの取得に失敗しました。
-            </Alert>
-            )
-          : code != null
-            ? (
-          <SyntaxHighlighter language='typescript' style={vs} customStyle={{
-            fontFamily: 'consolas monospace',
-            padding: '1rem',
-            border: '1px solid gray'
-          }}>
-            {code}
-          </SyntaxHighlighter>
+        {((): React.JSX.Element => {
+          switch (true) {
+            case error != null:
+              return (
+                <Alert variant='danger'>
+                  サンプルコードの取得に失敗しました。
+                </Alert>
               )
-            : selectedCodeId != null
-              ? (
-          <Spinner />
-                )
-              : (
-          <p>言語を選択してください。</p>
-                )}
+            case selectedCodeId == null:
+              return (
+                <p>言語を選択してください。</p>
+              )
+            case code == null:
+              return (
+                <Spinner />
+              )
+            default:
+              return (
+                <SyntaxHighlighter language={langKey} style={vs} customStyle={{
+                  fontFamily: 'consolas monospace',
+                  padding: '1rem',
+                  border: '1px solid gray'
+                }}>
+                  {code ?? '<NULL>'}
+                </SyntaxHighlighter>
+              )
+          }
+        })()}
       </Modal>
     </>
   )
