@@ -14,3 +14,7 @@ function bubbleSort (array: number[]): number[] {
   }
   return array
 }
+
+const array = [2, 5, 8, 1, 4, 3, 7, 6]
+const sortedArray = bubbleSort(array)
+console.log(sortedArray)

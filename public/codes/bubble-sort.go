@@ -1,3 +1,7 @@
+package main
+
+import "fmt"
+
 func bubbleSort(array []int) []int {
 	arrayLength := len(array)
 	// Loop through the array.
@@ -13,4 +17,10 @@ func bubbleSort(array []int) []int {
 		}
 	}
 	return array
+}
+
+func main() {
+	array := []int{2, 5, 8, 1, 4, 3, 7, 6}
+	sortedArray := bubbleSort(array)
+	fmt.Println(sortedArray)
 }

@@ -12,3 +12,7 @@ def bubbleSort(array: List[int]) -> List[int]:
                 array[j] = array[j + 1]
                 array[j + 1] = tempVal
     return array
+
+array = [2, 5, 8, 1, 4, 3, 7, 6]
+sortedArray = bubbleSort(array)
+print(sortedArray)
