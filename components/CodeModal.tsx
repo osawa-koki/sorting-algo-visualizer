@@ -35,7 +35,7 @@ export default function CodeModal (props: Props): React.JSX.Element {
 
   const [selectedCodeId, setSelectedCodeId] = useState<number | null>()
 
-  const path = useMemo(() => codes.find((code) => code.id === selectedCodeId)?.path, [selectedCodeId])
+  const path = useMemo((): string | null => codes.find((code) => code.id === selectedCodeId)?.path ?? null, [selectedCodeId])
 
   const { data: code, error } = useSWR(
     path != null ? `${setting.basePath}/codes/${path}` : null,
