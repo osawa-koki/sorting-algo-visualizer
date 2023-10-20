@@ -1,3 +1,5 @@
+using System;
+
 public static class SortingAlgo
 {
     public static int[] BubbleSort(int[] array)
@@ -19,5 +21,18 @@ public static class SortingAlgo
             }
         }
         return array;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        int[] array = { 2, 5, 8, 1, 4, 3, 7, 6 };
+        int[] sortedArray = SortingAlgo.BubbleSort(array);
+        foreach (int val in sortedArray)
+        {
+            Console.WriteLine(val);
+        }
     }
 }
