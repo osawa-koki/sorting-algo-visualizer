@@ -124,8 +124,8 @@ export default function DemoCanvas (
         >
           Shuffle
         </Button>
-        {active ?
-        <Button
+        {active
+          ? <Button
         variant='outline-primary'
         className='me-3'
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -133,8 +133,8 @@ export default function DemoCanvas (
         disabled={sorting}
       >
         Sort
-      </Button> :
-        <OverlayTrigger
+      </Button>
+          : <OverlayTrigger
         placement="right"
         delay={{ show: 250, hide: 400 }}
         overlay={(
