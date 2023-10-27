@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert, Button, Spinner } from 'react-bootstrap'
+import { Alert, Button, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
 import { BsCodeSlash, BsFillBookFill } from 'react-icons/bs'
 import setting from '../setting'
 import StickProperty from './StickProperty'
@@ -124,15 +124,28 @@ export default function DemoCanvas (
         >
           Shuffle
         </Button>
+        {active ?
         <Button
-          variant='outline-primary'
-          className='me-3'
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onClick={async () => { await startSorting() } }
-          disabled={sorting || !active}
-        >
-          Sort
-        </Button>
+        variant='outline-primary'
+        className='me-3'
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onClick={async () => { await startSorting() } }
+        disabled={sorting}
+      >
+        Sort
+      </Button> :
+        <OverlayTrigger
+        placement="right"
+        delay={{ show: 250, hide: 400 }}
+        overlay={(
+          <Tooltip>
+            {disabledReason}
+          </Tooltip>
+        )}
+      >
+        <Button variant="secondary" className='text-decoration-line-through'>Sort</Button>
+      </OverlayTrigger>
+      }
         {
           sorting &&
           <Button
@@ -144,11 +157,6 @@ export default function DemoCanvas (
           </Button>
         }
       </div>
-      {!active && (
-        <Alert variant='danger' className='mt-3'>
-          {disabledReason}
-        </Alert>
-      )}
       <StickProperty
         stickCount={stickCount}
         setStickCount={setStickCount}
