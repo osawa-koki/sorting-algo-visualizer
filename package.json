@@ -13,8 +13,7 @@
   },
   "private": false,
   "scripts": {
-    "dev": "yarn develop",
-    "develop": "next",
+    "dev": "yarn next --port 8000",
     "build": "next build",
     "start": "next start",
     "test": "jest",
