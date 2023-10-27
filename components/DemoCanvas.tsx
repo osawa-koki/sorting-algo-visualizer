@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Alert, Button, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Alert, Badge, Button, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
 import { BsCodeSlash, BsFillBookFill } from 'react-icons/bs'
 import setting from '../setting'
 import StickProperty from './StickProperty'
@@ -35,6 +35,13 @@ export default function DemoCanvas (
 
   const [descriptionModalIsOpen, setDescriptionModalIsOpen] = useState<boolean>(false)
   const [codeModalIsOpen, setCodeModalIsOpen] = useState<boolean>(false)
+
+  const isSorted = useMemo(() => {
+    if (sticks == null) return null
+    return sticks.every((stick, index) => {
+      return index === 0 || sticks[index - 1] <= stick
+    })
+  }, [sticks])
 
   const { active, disabledReason } =
   activeCondition?.({ stickCount: setting.stickCount }) ??
@@ -108,6 +115,12 @@ export default function DemoCanvas (
           )}
         </div>
       </h1>
+      {isSorted != null
+        ? (
+        <Badge bg={isSorted ? 'info' : 'warning'}>{isSorted ? 'Sorted!' : 'Not Sorted...'}</Badge>
+          )
+        : <Badge bg='secondary'>Not Ready...</Badge>
+      }
       <div id='DemoCanvas'>
         {
           sticks.map((stick, index) => {
