@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "yarn develop",
     "develop": "next",
-    "build": "next build && next export -o ./dist/",
+    "build": "next build",
     "start": "next start",
     "test": "jest",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx .",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
-    "next": "^13.5.6",
+    "next": "^14.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
