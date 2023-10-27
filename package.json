@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "yarn develop",
     "develop": "next",
-    "build": "next build && next export -o ./dist/",
+    "build": "next build",
     "start": "next start",
     "test": "jest",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx .",
