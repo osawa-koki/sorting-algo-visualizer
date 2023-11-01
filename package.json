@@ -37,7 +37,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.1",
     "@types/bootstrap": "^5.2.8",
-    "@types/jest": "^29.5.6",
+    "@types/jest": "^29.5.7",
     "@types/node": "^20.8.9",
     "@types/react": "^18.2.33",
     "@types/react-bootstrap": "^0.32.34",
