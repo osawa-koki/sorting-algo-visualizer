@@ -1,0 +1,13 @@
+/.devcontainer/
+/.github/
+/.vscode/
+/dist/
+/node_modules/
+
+/.editorconfig
+/.eslintrc.js
+/.gitignore
+
+/.jest.config.js
+LICENSE
+README.md

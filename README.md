@@ -37,3 +37,10 @@ yarn dev
 # ビルド
 yarn build
 ```
+
+本番用にDockerでビルドする場合は以下のコマンドを実行してください。  
+
+```shell
+docker build -t sorting-algo-visualizer .
+docker run -p 80:80 -d --rm --name sorting-algo-visualizer sorting-algo-visualizer
+```
