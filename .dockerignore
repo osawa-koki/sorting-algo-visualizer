@@ -7,7 +7,6 @@
 /.editorconfig
 /.eslintrc.js
 /.gitignore
-
 /.jest.config.js
-LICENSE
-README.md
+/LICENSE
+/README.md
