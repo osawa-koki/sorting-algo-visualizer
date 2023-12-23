@@ -8,7 +8,10 @@ const setting = {
   title: '💦 Sorting Algo Visualizer 💦',
   intervalTime: 10,
   stopping: false,
-  stickCount: 64
+  stickCount: 64,
+  copyIntervalTime: 1000,
+  overlayTriggerShow: 100,
+  overlayTriggerHide: 200
 }
 
 export default setting

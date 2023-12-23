@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react'
-import { Alert, Button, CloseButton, Spinner } from 'react-bootstrap'
+import { Alert, Button, CloseButton, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
 import Modal from 'react-modal'
+import { FaCopy } from 'react-icons/fa'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import vs from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import useSWR from 'swr'
+import vs from 'react-syntax-highlighter/dist/cjs/styles/hljs/vs'
 import setting from '../setting'
 import fetcher from '../src/common/fetcher'
 
@@ -34,6 +35,13 @@ export default function CodeModal (props: Props): React.JSX.Element {
   const { title, isOpen, setIsOpen, codes } = props
 
   const [selectedCodeId, setSelectedCodeId] = useState<number | null>()
+  const [copied, setCopied] = useState(false)
+
+  const copy = (code: string): void => {
+    setCopied(true)
+    void navigator.clipboard.writeText(code)
+    setTimeout(() => { setCopied(false) }, setting.copyIntervalTime)
+  }
 
   const {
     path,
@@ -96,13 +104,30 @@ export default function CodeModal (props: Props): React.JSX.Element {
               )
             default:
               return (
-                <SyntaxHighlighter language={langKey} style={vs} customStyle={{
-                  fontFamily: 'consolas monospace',
-                  padding: '1rem',
-                  border: '1px solid gray'
-                }}>
-                  {code ?? '<NULL>'}
-                </SyntaxHighlighter>
+                <div className='position-relative h-75'>
+                  <SyntaxHighlighter language={langKey} style={vs} customStyle={{
+                    fontFamily: 'consolas monospace',
+                    padding: '1rem',
+                    border: '1px solid gray',
+                    position: 'absolute',
+                    inset: 0
+                  }}>
+                    {code ?? '<NULL>'}
+                  </SyntaxHighlighter>
+                  <OverlayTrigger
+                    placement="right"
+                    delay={{ show: setting.overlayTriggerHide, hide: setting.overlayTriggerHide }}
+                    overlay={(props) => (
+                      <Tooltip {...props}>
+                        {copied ? 'Copied!' : 'Copy'}
+                      </Tooltip>
+                    )}
+                  >
+                    <div>
+                      <FaCopy role='button' className={`position-absolute top-0 end-0 m-1 ${copied ? 'text-secondary' : 'text-primary'}`} onClick={() => { copy(code) }} />
+                    </div>
+                  </OverlayTrigger>
+                </div>
               )
           }
         })()}
