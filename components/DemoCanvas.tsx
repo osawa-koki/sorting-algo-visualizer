@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Alert, Badge, Button, OverlayTrigger, Spinner, Tooltip } from 'react-bootstrap'
 import { BsCodeSlash, BsFillBookFill } from 'react-icons/bs'
+import Confetti from 'react-confetti'
 import setting from '../setting'
 import StickProperty from './StickProperty'
 import DescriptionModal from './DescriptionModal'
@@ -28,6 +29,7 @@ export default function DemoCanvas (
   } = props
 
   const [sorting, setSorting] = useState<boolean>(false)
+  const [congrats, setCongrats] = useState<boolean>(false)
 
   const [stickCount, setStickCount] = useState<number>(setting.stickCount)
   const [sticks, setSticks] = useState<number[]>()
@@ -69,6 +71,8 @@ export default function DemoCanvas (
     setSorting(true)
     await sort(sticks, setSticks)
     putSortingState(false)
+    setCongrats(true)
+    setTimeout(() => { setCongrats(false) }, setting.congratsIntervalTime)
   }
 
   const putSortingState = (sorting: boolean): void => {
@@ -94,6 +98,7 @@ export default function DemoCanvas (
 
   return (
     <>
+      {congrats && <Confetti />}
       <h1 className='d-flex justify-content-between align-items-center'>
         {title}
         <div>

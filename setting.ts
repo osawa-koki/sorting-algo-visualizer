@@ -11,7 +11,8 @@ const setting = {
   stickCount: 64,
   copyIntervalTime: 1000,
   overlayTriggerShow: 100,
-  overlayTriggerHide: 200
+  overlayTriggerHide: 200,
+  congratsIntervalTime: 5000
 }
 
 export default setting
