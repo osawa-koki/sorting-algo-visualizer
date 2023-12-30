@@ -16,6 +16,8 @@ interface Props {
   codes?: Codes
 }
 
+let stopped = false
+
 export default function DemoCanvas (
   props: Props
 ): React.JSX.Element {
@@ -68,9 +70,11 @@ export default function DemoCanvas (
   const startSorting = async (): Promise<void> => {
     if (sticks == null) return
     if (sorting) return
+    stopped = false
     setSorting(true)
     await sort(sticks, setSticks)
     putSortingState(false)
+    if (stopped) return
     setCongrats(true)
     setTimeout(() => { setCongrats(false) }, setting.congratsIntervalTime)
   }
@@ -146,8 +150,7 @@ export default function DemoCanvas (
           ? <Button
         variant='outline-primary'
         className='me-3'
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        onClick={async () => { await startSorting() } }
+        onClick={() => { void startSorting() } }
         disabled={sorting}
       >
         Sort
@@ -169,7 +172,7 @@ export default function DemoCanvas (
           <Button
             variant='outline-danger'
             className='me-3'
-            onClick={() => { putSortingState(true) }}
+            onClick={() => { stopped = true; putSortingState(true) }}
           >
             Stop
           </Button>
