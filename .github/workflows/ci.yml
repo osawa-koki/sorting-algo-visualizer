@@ -17,11 +17,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: yarn install --frozen-lockfile --non-interactive
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
       - name: Run tests
         run: yarn test
+      - name: Upload report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.node-version }}
+          path: ./playwright-report/
+          retention-days: 30
       - name: Linter check
         run: yarn lint
       - name: Test build
         run: yarn build
-      # - name: Check for security vulnerabilities
-      #   run: yarn audit
