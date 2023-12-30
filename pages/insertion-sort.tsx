@@ -9,13 +9,13 @@ export default function InsertionSortPage (): React.JSX.Element {
       const key = sticks[i]
       let j = i - 1
       while (j >= 0 && sticks[j] > key) {
-        if (setting.stopping) break
+        if (setting.stopping) break // 中断用
         sticks[j + 1] = sticks[j]
         j--
         setSticks([...sticks])
         await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
       }
-      if (setting.stopping) break
+      if (setting.stopping) break // 中断用
       sticks[j + 1] = key
       setSticks([...sticks])
       await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
