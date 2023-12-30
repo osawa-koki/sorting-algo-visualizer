@@ -4,17 +4,21 @@ import setting from '../setting'
 
 export default function InsertionSortPage (): React.JSX.Element {
   const sort = async (sticks: number[], setSticks: (sticks: number[]) => void): Promise<void> => {
-    for (let i = 1; i < sticks.length; i++) {
-      const v = sticks[i]
+    const len = sticks.length
+    for (let i = 1; i < len; i++) {
+      const key = sticks[i]
       let j = i - 1
-      while (j >= 0 && sticks[j] > v) {
-        if (setting.stopping) return // 中断用
+      while (j >= 0 && sticks[j] > key) {
+        if (setting.stopping) break
         sticks[j + 1] = sticks[j]
         j--
-        await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
         setSticks([...sticks])
+        await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
       }
-      sticks[j + 1] = v
+      if (setting.stopping) break
+      sticks[j + 1] = key
+      setSticks([...sticks])
+      await new Promise(resolve => setTimeout(resolve, setting.intervalTime))
     }
   }
 
