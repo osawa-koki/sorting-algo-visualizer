@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test'
+import { test, expect, type Page, type JSHandle } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://demo.playwright.dev/todomvc')
@@ -407,7 +407,7 @@ test.describe('Routing', () => {
   })
 })
 
-async function createDefaultTodos (page: Page) {
+async function createDefaultTodos (page: Page): Promise<void> {
   // create a new todo locator
   const newTodo = page.getByPlaceholder('What needs to be done?')
 
@@ -417,19 +417,19 @@ async function createDefaultTodos (page: Page) {
   }
 }
 
-async function checkNumberOfTodosInLocalStorage (page: Page, expected: number) {
+async function checkNumberOfTodosInLocalStorage (page: Page, expected: number): Promise<JSHandle<boolean>> {
   return await page.waitForFunction(e => {
     return JSON.parse(localStorage['react-todos']).length === e
   }, expected)
 }
 
-async function checkNumberOfCompletedTodosInLocalStorage (page: Page, expected: number) {
+async function checkNumberOfCompletedTodosInLocalStorage (page: Page, expected: number): Promise<JSHandle<boolean>> {
   return await page.waitForFunction(e => {
     return JSON.parse(localStorage['react-todos']).filter((todo: any) => todo.completed).length === e
   }, expected)
 }
 
-async function checkTodosInLocalStorage (page: Page, title: string) {
+async function checkTodosInLocalStorage (page: Page, title: string): Promise<JSHandle<any>> {
   return await page.waitForFunction(t => {
     return JSON.parse(localStorage['react-todos']).map((todo: any) => todo.title).includes(t)
   }, title)
