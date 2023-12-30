@@ -6,7 +6,7 @@ import { defineConfig, devices } from '@playwright/test'
  */
 // require('dotenv').config();
 
-const isCi = process.env.CI === '1'
+const isCi = Boolean(process.env.CI)
 
 /**
  * See https://playwright.dev/docs/test-configuration.
