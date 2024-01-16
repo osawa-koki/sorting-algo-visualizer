@@ -21,7 +21,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.4",
     "bootstrap": "^5.3.2",
     "next": "^14.0.4",
     "react": "^18.2.0",
